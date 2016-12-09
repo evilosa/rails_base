@@ -69,6 +69,6 @@ class TrainsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def train_params
-      params.fetch(:train, {})
+      params.require(:train).permit(:number)
     end
 end
