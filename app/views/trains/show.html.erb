@@ -15,5 +15,15 @@
   <%= @train.route.present? ? @train.route.name : 'Маршрут не назначен' %>
 </p>
 
+<p>
+  <strong>Кол-во вагонов:</strong>
+  <%= @train.wagons_info %>
+</p>
+
+<p>
+  <strong>Кол-во мест:</strong>
+  <%= @train.wagons_places_info %>
+</p>
+
 <%= link_to 'Редактировать', edit_train_path(@train) %> |
 <%= link_to 'Назад', trains_path %>
