@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Поезд:</strong>
+  <%= @wagon.train.present? ? @wagon.train.number : 'Поезд не указан' %>
+</p>
+
+<p>
+  <strong>Номер:</strong>
+  <%= @wagon.number %>
+</p>
+
+<p>
+  <strong>Тип вагона:</strong>
+  <%= @wagon.wagon_type %>
+</p>
+
+<p>
+  <strong>Мест В/Н:</strong>
+  <%= "#{@wagon.top_places}/#{@wagon.bottom_places}" %>
+</p>
+
+<%= link_to 'Редактировать', edit_wagon_path(@wagon) %> |
+<%= link_to 'Назад', wagons_path %>
