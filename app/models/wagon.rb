@@ -1,5 +1,9 @@
 class Wagon < ApplicationRecord
-  validates :number, :wagon_type, :train_id, :top_places, :bottom_places, presence: true
+  validates :number, :train_id, presence: true
 
   belongs_to :train
+
+  def total_seats
+    0
+  end
 end
