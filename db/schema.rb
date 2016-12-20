@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161219200410) do
+ActiveRecord::Schema.define(version: 20161220203308) do
 
   create_table "railway_stations", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "title"
+    t.string   "name"
   end
 
   create_table "railway_stations_routes", force: :cascade do |t|
@@ -50,10 +50,8 @@ ActiveRecord::Schema.define(version: 20161219200410) do
     t.string   "number"
     t.integer  "current_station_id"
     t.integer  "route_id"
-    t.integer  "wagons_id"
     t.index ["current_station_id"], name: "index_trains_on_current_station_id"
     t.index ["route_id"], name: "index_trains_on_route_id"
-    t.index ["wagons_id"], name: "index_trains_on_wagons_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -62,9 +60,7 @@ ActiveRecord::Schema.define(version: 20161219200410) do
   end
 
   create_table "wagons", force: :cascade do |t|
-    t.string   "number"
-    t.integer  "top_places"
-    t.integer  "bottom_places"
+    t.integer  "number"
     t.integer  "train_id"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
@@ -74,6 +70,7 @@ ActiveRecord::Schema.define(version: 20161219200410) do
     t.integer  "side_top_seats"
     t.integer  "side_bottom_seats"
     t.integer  "seats"
+    t.integer  "total_seats"
     t.index ["train_id"], name: "index_wagons_on_train_id"
   end
 

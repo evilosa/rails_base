@@ -13,7 +13,7 @@
 
     <div class="field">
       <%= f.label :current_station, 'Текущая станция' %>
-      <%= f.collection_select :current_station_id, RailwayStation.all, :id, :title %>
+      <%= f.collection_select :current_station_id, RailwayStation.all, :id, :name %>
     </div>
 
     <div class="actions">

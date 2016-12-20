@@ -7,7 +7,7 @@
 
 <p>
   <strong>Текущая станция:</strong>
-  <%= @train.current_station.present? ? @train.current_station.title : 'Станция не назначена' %>
+  <%= @train.current_station.present? ? @train.current_station.name : 'Станция не назначена' %>
 </p>
 
 <p>
@@ -15,14 +15,26 @@
   <%= @train.route.present? ? @train.route.name : 'Маршрут не назначен' %>
 </p>
 
-<p>
-  <strong>Кол-во вагонов:</strong>
-  <%= @train.wagons_info %>
-</p>
+<% if @train.wagons.size == 0 %>
+  <p><strong>Нет вагонов</strong></p>
+<% else %>
+  <p>
+    <strong>Кол-во вагонов:</strong>
+    <%= @train.wagons.size %>
+
+    <p>Вагоны в составе:</p>
+    <ul>
+      <% @train.wagons.each do |wagon| %>
+        <li><%= link_to wagon.number.to_s, wagon%></li>
+      <% end %>
+    </ul>
+
+  </p>
+<% end %>
 
 <p>
   <strong>Кол-во мест:</strong>
-  <%= @train.wagons_places_info %>
+  <%= @train.wagons.sum(:total_seats) %>
 </p>
 
 <%= link_to 'Редактировать', edit_train_path(@train) %> |

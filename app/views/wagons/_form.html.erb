@@ -6,25 +6,47 @@
       <%= f.collection_select :train_id, Train.all, :id, :number %>
     </div>
 
-    <div class="field">
-      <%= f.label :number, 'Номер' %>
-      <%= f.text_field :number %>
-    </div>
+    <% if wagon.new_record? %>
+      <div class="field">
+        <%= f.label :type, 'Тип вагона' %>
+        <%= f.select :type, Wagon.types %>
+      </div>
+    <% end %>
 
-    <div class="field">
-      <%= f.label :type, 'Тип вагона' %>
-      <%= f.select :type, ['CoupeWagon'] %>
-    </div>
+    <% if wagon.top_seats? %>
+      <div class="field">
+        <%= f.label :top_seats, 'Верхних мест' %>
+        <%= f.text_field :top_seats %>
+      </div>
+    <% end %>
 
-    <div class="field">
-      <%= f.label :top_places, 'Верхних мест' %>
-      <%= f.text_field :top_places %>
-    </div>
+    <% if wagon.bottom_seats? %>
+        <div class="field">
+          <%= f.label :bottom_seats, 'Нижних мест' %>
+          <%= f.text_field :bottom_seats %>
+        </div>
+    <% end %>
 
-    <div class="field">
-      <%= f.label :bottom_places, 'Нижних мест' %>
-      <%= f.text_field :bottom_places %>
-    </div>
+    <% if wagon.side_top_seats? %>
+        <div class="field">
+          <%= f.label :side_top_seats, 'Боковых верхних мест' %>
+          <%= f.text_field :side_top_seats %>
+        </div>
+    <% end %>
+
+    <% if wagon.side_bottom_seats? %>
+        <div class="field">
+          <%= f.label :side_bottom_seats, 'Боковых нижних мест' %>
+          <%= f.text_field :side_bottom_seats %>
+        </div>
+    <% end %>
+
+    <% if wagon.seats? %>
+        <div class="field">
+          <%= f.label :seats, 'Сидячих мест' %>
+          <%= f.text_field :seats %>
+        </div>
+    <% end %>
 
     <div class="actions">
       <%= f.submit "#{ wagon.new_record? ? 'Создать' : 'Изменить' }" %>
