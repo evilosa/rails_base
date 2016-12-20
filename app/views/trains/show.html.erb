@@ -24,7 +24,8 @@
 
     <p>Вагоны в составе:</p>
     <ul>
-      <% @train.wagons.each do |wagon| %>
+      <% sourceCollection = @train.wagon_order ? @train.wagons.ordered : @train.wagons.ordered_desc %>
+      <% sourceCollection.each do |wagon| %>
         <li><%= link_to wagon.number.to_s, wagon%></li>
       <% end %>
     </ul>
@@ -35,6 +36,12 @@
 <p>
   <strong>Кол-во мест:</strong>
   <%= @train.wagons.sum(:total_seats) %>
+</p>
+
+<p>
+  <strong>Пример запроса конкретных данных чере AR Query Interface:</strong>
+  Количество мест в сидячих вагонах:
+  <%= @train.calculate_seats('CoachCarriage', 'seats') %>
 </p>
 
 <%= link_to 'Редактировать', edit_train_path(@train) %> |

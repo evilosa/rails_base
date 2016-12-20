@@ -4,6 +4,8 @@ class Wagon < ApplicationRecord
 
   belongs_to :train
 
+  scope :ordered, -> { order(:number) }
+  scope :ordered_desc, -> { order('"number" desc') }
   scope :coach_carriages, -> { where(type: 'CoachCarriage') }
   scope :compartment_carriages, -> { where(type: 'CompartmentCarriage') }
   scope :open_plan_carriages, -> { where(type: 'OpenPlanCarriage') }
@@ -12,6 +14,10 @@ class Wagon < ApplicationRecord
   class << self
     def types
       %w(CoachCarriage CompartmentCarriage OpenPlanCarriage UpholsteredCarriage)
+    end
+
+    def seat_types
+      %w(top_seats bottom_seats side_top_seats side_bottom_seats seats)
     end
   end
 
