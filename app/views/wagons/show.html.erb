@@ -15,35 +15,35 @@
   <%= @wagon.type %>
 </p>
 
-<% if @wagon.top_seats? %>
+<% if @wagon.has_seats?(:top_seats) %>
     <p>
     <strong>Верхних мест:</strong>
     <%= @wagon.top_seats %>
   </p>
 <% end %>
 
-<% if @wagon.bottom_seats? %>
+<% if @wagon.has_seats?(:bottom_seats) %>
     <p>
       <strong>Нижних мест:</strong>
       <%= @wagon.bottom_seats %>
     </p>
 <% end %>
 
-<% if @wagon.side_top_seats? %>
+<% if @wagon.has_seats?(:side_top_seats) %>
     <p>
       <strong>Боковых верхних мест:</strong>
       <%= @wagon.side_top_seats %>
     </p>
 <% end %>
 
-<% if @wagon.side_bottom_seats? %>
+<% if @wagon.has_seats?(:side_bottom_seats) %>
     <p>
       <strong>Боковых нижних мест:</strong>
       <%= @wagon.side_bottom_seats %>
     </p>
 <% end %>
 
-<% if @wagon.seats? %>
+<% if @wagon.has_seats?(:seats) %>
     <p>
       <strong>Сидячих мест:</strong>
       <%= @wagon.seats %>

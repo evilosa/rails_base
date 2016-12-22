@@ -1,6 +1,5 @@
 class WagonsController < ApplicationController
   before_action :set_wagon, only: [:show, :edit, :update, :destroy]
-  before_action :set_type
 
   # GET /wagons
   def index
@@ -49,12 +48,8 @@ class WagonsController < ApplicationController
 
   private
 
-  def set_type
-    @type = type
-  end
-
   def type
-    Wagon.types.include?(params[:type]) ? params[:type] : 'Wagon'
+    @type ||= Wagon::TYPES.include?(params[:type]) ? params[:type] : 'Wagon'
   end
 
   def type_class

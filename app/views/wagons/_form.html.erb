@@ -9,39 +9,39 @@
     <% if wagon.new_record? %>
       <div class="field">
         <%= f.label :type, 'Тип вагона' %>
-        <%= f.select :type, Wagon.types %>
+        <%= f.select :type, Wagon::TYPES %>
       </div>
     <% end %>
 
-    <% if wagon.top_seats? %>
+    <% if wagon.has_seats?(:top_seats) %>
       <div class="field">
         <%= f.label :top_seats, 'Верхних мест' %>
         <%= f.text_field :top_seats %>
       </div>
     <% end %>
 
-    <% if wagon.bottom_seats? %>
+    <% if wagon.has_seats?(:bottom_seats) %>
         <div class="field">
           <%= f.label :bottom_seats, 'Нижних мест' %>
           <%= f.text_field :bottom_seats %>
         </div>
     <% end %>
 
-    <% if wagon.side_top_seats? %>
+    <% if wagon.has_seats?(:side_top_seats) %>
         <div class="field">
           <%= f.label :side_top_seats, 'Боковых верхних мест' %>
           <%= f.text_field :side_top_seats %>
         </div>
     <% end %>
 
-    <% if wagon.side_bottom_seats? %>
+    <% if wagon.has_seats?(:side_bottom_seats) %>
         <div class="field">
           <%= f.label :side_bottom_seats, 'Боковых нижних мест' %>
           <%= f.text_field :side_bottom_seats %>
         </div>
     <% end %>
 
-    <% if wagon.seats? %>
+    <% if wagon.has_seats?(:seats) %>
         <div class="field">
           <%= f.label :seats, 'Сидячих мест' %>
           <%= f.text_field :seats %>

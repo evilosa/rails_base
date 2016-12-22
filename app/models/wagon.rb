@@ -4,56 +4,28 @@ class Wagon < ApplicationRecord
 
   belongs_to :train
 
-  scope :ordered, -> { order(:number) }
-  scope :ordered_desc, -> { order('"number" desc') }
-  scope :coach_carriages, -> { where(type: 'CoachCarriage') }
-  scope :compartment_carriages, -> { where(type: 'CompartmentCarriage') }
-  scope :open_plan_carriages, -> { where(type: 'OpenPlanCarriage') }
-  scope :upholstered_carriages, -> { where(type: 'UpholsteredCarriage') }
+  scope :ordered, -> (order) { order(number: order ? 'asc' : 'desc') }
 
-  class << self
-    def types
-      %w(CoachCarriage CompartmentCarriage OpenPlanCarriage UpholsteredCarriage)
-    end
-
-    def seat_types
-      %w(top_seats bottom_seats side_top_seats side_bottom_seats seats)
-    end
-  end
+  TYPES = %w(CoachCarriage CompartmentCarriage OpenPlanCarriage UpholsteredCarriage).freeze
+  SEATS_TYPES = [].freeze
 
   def calculate_total_seats
     0
+  end
+
+  def has_seats?(seats_type)
+    self.class::SEATS_TYPES.include?(seats_type)
   end
 
   def train?
     self.train.present?
   end
 
-  def top_seats?
-    false
-  end
-
-  def bottom_seats?
-    false
-  end
-
-  def side_top_seats?
-    false
-  end
-
-  def side_bottom_seats?
-    false
-  end
-
-  def seats?
-    false
-  end
-
   private
 
   def set_number
-    return unless train.present? && self.number.nil?
+    return unless train? && self.number.nil?
 
-    self.number = train.wagons.maximum(:number) + 1 if train.wagons.size > 0
+    self.number = train.wagons.size + 1
   end
 end

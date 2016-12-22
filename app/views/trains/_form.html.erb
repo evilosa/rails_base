@@ -16,6 +16,11 @@
       <%= f.collection_select :current_station_id, RailwayStation.all, :id, :name %>
     </div>
 
+    <div class="field">
+      <%= f.label :wagon_order, 'Прямой порядок сортировки' %>
+      <%= f.check_box :wagon_order %>
+    </div>
+
     <div class="actions">
       <%= f.submit "#{ train.new_record? ? 'Создать' : 'Изменить' }" %>
     </div>
