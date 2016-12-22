@@ -14,9 +14,7 @@
   </thead>
 
   <tbody>
-    <% @wagons.each do |wagon| %>
-      <%= render 'wagon', wagon: wagon %>
-    <% end %>
+    <%= render 'wagon', wagons: @wagons %>
   </tbody>
 </table>
 

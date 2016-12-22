@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :trains do
-    resources :wagons, :coach_carriages, :compartment_carriages, :open_plan_carriages, :upholstered_carriages, shallow: true
+    resources :wagons, shallow: true
   end
 
   resources :railway_stations do
