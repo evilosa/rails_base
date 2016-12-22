@@ -1,4 +1,5 @@
 class WagonsController < ApplicationController
+  before_action :set_train, only: [:index, :create, :new]
   before_action :set_wagon, only: [:show, :edit, :update, :destroy]
 
   # GET /wagons
@@ -21,10 +22,11 @@ class WagonsController < ApplicationController
 
   # POST /wagons
   def create
-    @wagon = type_class.new(wagon_params)
+    # @wagon = type_class.new(wagon_params)
+    @wagon = @train.wagons.new(wagon_params)
 
     if @wagon.save
-      redirect_to @wagon, notice: 'Wagon was successfully created.'
+      redirect_to @train
     else
       render :new
     end
@@ -54,6 +56,10 @@ class WagonsController < ApplicationController
 
   def type_class
     type.constantize
+  end
+
+  def set_train
+    @train = Train.find(params[:train_id])
   end
 
   # Use callbacks to share common setup or conswagonts between actions.

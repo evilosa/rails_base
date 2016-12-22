@@ -25,10 +25,10 @@
     <p>Вагоны в составе:</p>
     <ul>
       <% @train.wagons.ordered(@train.wagon_order).each do |wagon| %>
-        <li><%= link_to wagon.number.to_s, wagon%></li>
+
       <% end %>
     </ul>
-
+    <%= link_to "Добавить вагон", new_train_wagon_path(@train) %>
   </p>
 <% end %>
 

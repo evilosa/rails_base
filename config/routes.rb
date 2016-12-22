@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
-  resources :trains
-  resources :railway_stations
+  resources :trains do
+    resources :wagons, :coach_carriages, :compartment_carriages, :open_plan_carriages, :upholstered_carriages, shallow: true
+  end
+
+  resources :railway_stations do
+    patch :update_position, on: :member
+  end
   resources :routes
-  resources :wagons
-  resources :coach_carriages, controller: 'wagons', type: 'CoachCarriage'
-  resources :compartment_carriages, controller: 'wagons', type: 'CompartmentCarriage'
-  resources :open_plan_carriages, controller: 'wagons', type: 'OpenPlanCarriage'
-  resources :upholstered_carriages, controller: 'wagons', type: 'UpholsteredCarriage'
 
   root 'railway_stations#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
