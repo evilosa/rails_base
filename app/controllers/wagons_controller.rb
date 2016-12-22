@@ -3,7 +3,7 @@ class WagonsController < ApplicationController
 
   # GET /wagons
   def index
-    @wagons = Wagon.all
+    @wagons = type_class.all
   end
 
   # GET /wagons/1
@@ -12,7 +12,7 @@ class WagonsController < ApplicationController
 
   # GET /wagons/new
   def new
-    @wagon = Wagon.new
+    @wagon = type_class.new
   end
 
   # GET /wagons/1/edit
@@ -21,7 +21,7 @@ class WagonsController < ApplicationController
 
   # POST /wagons
   def create
-    @wagon = Wagon.new(wagon_params)
+    @wagon = type_class.new(wagon_params)
 
     if @wagon.save
       redirect_to @wagon, notice: 'Wagon was successfully created.'
@@ -32,6 +32,7 @@ class WagonsController < ApplicationController
 
   # PATCH/PUT /wagons/1
   def update
+    @wagon.calculate_total_seats
     if @wagon.update(wagon_params)
       redirect_to @wagon, notice: 'Wagon was successfully updated.'
     else
@@ -46,13 +47,22 @@ class WagonsController < ApplicationController
   end
 
   private
+
+  def type
+    @type ||= Wagon::TYPES.include?(params[:type]) ? params[:type] : 'Wagon'
+  end
+
+  def type_class
+    type.constantize
+  end
+
   # Use callbacks to share common setup or conswagonts between actions.
   def set_wagon
-    @wagon = Wagon.find(params[:id])
+    @wagon = type_class.find(params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def wagon_params
-    params.require(:wagon).permit(:number, :wagon_type, :train_id, :top_places, :bottom_places)
+    params.require(type.underscore.to_sym).permit(:number, :type, :train_id, :total_seats, :top_seats, :bottom_seats, :side_top_seats, :side_bottom_seats, :seats)
   end
 end

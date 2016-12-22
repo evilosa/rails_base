@@ -16,7 +16,16 @@
 </p>
 
 <p>
-  <strong>Станций в маршруте нет</strong>
+  <% if @route.railway_stations.empty? %>
+      <strong>Станций в маршруте нет</strong>
+  <% else %>
+      <strong>Станции в маршруте:</strong>
+      <ul>
+        <% @route.railway_stations.ordered.each do |station| %>
+          <li> <%= station.name %> </li>
+        <% end %>
+      </ul>
+  <% end %>
 </p>
 
 <%= link_to 'Редактировать', edit_route_path(@route) %> |

@@ -8,13 +8,15 @@
       <th>Номер</th>
       <th>Тип</th>
       <th>Поезд</th>
-      <th>Мест В/Н</th>
+      <th>Мест</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
-    <%= render @wagons %>
+    <% @wagons.each do |wagon| %>
+      <%= render 'wagon', wagon: wagon %>
+    <% end %>
   </tbody>
 </table>
 
