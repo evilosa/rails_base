@@ -7,7 +7,7 @@
 
 <p>
   <strong>Пользователь:</strong>
-  <%= @ticket.user.to_s %>
+  <%= @ticket.user.name %>
 </p>
 
 <p>
@@ -20,5 +20,20 @@
   <%= @ticket.end_station.present? ? @ticket.end_station.name : 'Конечная станция не назначена' %>
 </p>
 
-<%= link_to 'Редактировать', edit_train_path(@train) %> |
-<%= link_to 'Назад', trains_path %>
+<p>
+  <strong>Паспорт №:</strong>
+  <%= @ticket.document_number %>
+</p>
+
+<p>
+  <strong>Паспорт серия:</strong>
+  <%= @ticket.document_series %>
+</p>
+
+<p>
+  <strong>ФИО:</strong>
+  <%= @ticket.initials %>
+</p>
+
+<%= link_to 'Редактировать', edit_ticket_path(@ticket) %> |
+<%= link_to 'Назад', tickets_path %>

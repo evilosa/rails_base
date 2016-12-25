@@ -26,6 +26,31 @@
       <%= f.collection_select :end_station_id, RailwayStation.all, :id, :name %>
     </div>
 
+    <div class="field">
+      <%= f.label :document_series, 'Паспорт серия' %>
+      <%= f.text_field :document_series %>
+    </div>
+
+    <div class="field">
+      <%= f.label :document_number, 'Паспорт №' %>
+      <%= f.text_field :document_number %>
+    </div>
+
+    <div class="field">
+      <%= f.label :last_name, 'Фамилия' %>
+      <%= f.text_field :last_name %>
+    </div>
+
+    <div class="field">
+      <%= f.label :first_name, 'Имя' %>
+      <%= f.text_field :first_name %>
+    </div>
+
+    <div class="field">
+      <%= f.label :second_name, 'Отчество' %>
+      <%= f.text_field :second_name %>
+    </div>
+
     <div class="actions">
       <%= f.submit "#{ ticket.new_record? ? 'Создать' : 'Изменить' }" %>
     </div>

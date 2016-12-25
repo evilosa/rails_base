@@ -4,13 +4,12 @@ class SearchController < ApplicationController
   end
 
   def show
-    stations = [secure_params[:first_station_id], secure_params[:last_station_id]].uniq
-    @result = Search.find_route_trains(stations)
+    @result = Search.find_route_trains(secure_params)
   end
 
   private
 
   def secure_params
-    params.permit(:first_station_id, :last_station_id)
+    params.require(:search).permit(:first_station_id, :last_station_id)
   end
 end

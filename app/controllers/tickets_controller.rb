@@ -38,6 +38,10 @@ class TicketsController < ApplicationController
     redirect_to tickets_url
   end
 
+  def buy
+    @ticket = Ticket.new(ticket_params)
+  end
+
   private
 
   def set_ticket
@@ -45,6 +49,7 @@ class TicketsController < ApplicationController
   end
 
   def ticket_params
-    params.require(:ticket).permit(:number, :user_id, :start_station_id, :end_station_id)
+    params.require(:ticket).permit(:number, :user_id, :train_id, :start_station_id, :end_station_id, :document_series, :document_number, :last_name, :first_name, :second_name)
   end
+
 end

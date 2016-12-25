@@ -5,7 +5,6 @@
     <tr>
       <td>№ Поезда:</td>
       <td>Маршрут:</td>
-      <td>Станция:</td>
       <td>Прибытие:</td>
       <td>Отправление:</td>
       <td>Действие:</td>
@@ -15,11 +14,16 @@
     <% @result.each do |route| %>
       <tr>
         <%= form_tag(buy_ticket_path, method: :post) do %>
-          <td> <%= route.train_number %> </td>
-          <td> <%= route.route_name %> </td>
-          <td> <%= route.railway_station_name %> </td>
-          <td> <%= route.arrival_time.to_time.strftime('%H:%M')%> </td>
-          <td> <%= route.departure_time.to_time.strftime('%H:%M') %> </td>
+          <td> <%= label_tag route.train_number %> </td>
+          <td> <%= label_tag route.route_name %> </td>
+          <td> <%= label_tag route.arrival_time.to_time.strftime('%H:%M')%> </td>
+          <td> <%= label_tag route.departure_time.to_time.strftime('%H:%M') %> </td>
+          <%= hidden_field_tag "ticket[number]", Ticket.new_number %>
+          <%= hidden_field_tag "ticket[user_id]", User.first %>
+          <%= hidden_field_tag "ticket[train_id]", route.train_id %>
+          <%= hidden_field_tag "ticket[route_id]", route.route_id %>
+          <%= hidden_field_tag "ticket[start_station_id]", route.start_station_id %>
+          <%= hidden_field_tag "ticket[end_station_id]", route.end_station_id %>
           <td> <%= submit_tag 'Купить' %> </td>
         <% end %>
       </tr>

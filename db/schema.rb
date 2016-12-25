@@ -12,19 +12,6 @@
 
 ActiveRecord::Schema.define(version: 20161225132058) do
 
-  create_table "personal_infos", force: :cascade do |t|
-    t.integer  "ticket_id"
-    t.string   "number"
-    t.string   "series"
-    t.string   "first_name"
-    t.string   "second_name"
-    t.string   "last_name"
-    t.string   "birth_day"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["ticket_id"], name: "index_personal_infos_on_ticket_id"
-  end
-
   create_table "railway_stations", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -48,11 +35,17 @@ ActiveRecord::Schema.define(version: 20161225132058) do
   end
 
   create_table "tickets", force: :cascade do |t|
-    t.string  "number"
+    t.integer "number"
     t.integer "train_id"
     t.integer "user_id"
     t.integer "start_station_id"
     t.integer "end_station_id"
+    t.string  "document_series"
+    t.string  "document_number"
+    t.string  "first_name"
+    t.string  "second_name"
+    t.string  "last_name"
+    t.string  "birth_day"
     t.index ["end_station_id"], name: "index_tickets_on_end_station_id"
     t.index ["start_station_id"], name: "index_tickets_on_start_station_id"
     t.index ["train_id"], name: "index_tickets_on_train_id"

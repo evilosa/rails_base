@@ -23,7 +23,7 @@ class RailwayStation < ApplicationRecord
   end
 
   def arrival(route)
-    station_route(route).try(:arrival_time)
+      station_route(route).try(:arrival_time)
   end
 
   def departure(route)

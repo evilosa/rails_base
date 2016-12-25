@@ -7,13 +7,9 @@ Rails.application.routes.draw do
     patch :update_position, :update_time, on: :member
   end
 
-  resources :routes, :users
+  resources :routes, :users, :tickets
 
-  resources :tickets do
-    resources :personal_infos, shallow: true
-  end
-
-  post 'tickets', to: 'tickets#buy', as: 'buy_ticket'
+  post 'tickets/buy', to: 'tickets#buy', as: 'buy_ticket'
 
   get 'search', to: 'search#index'
   post 'search', to: 'search#show'
