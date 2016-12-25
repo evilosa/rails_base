@@ -8,9 +8,9 @@ Rails.application.routes.draw do
   end
   resources :routes
 
-  get 'search', to: 'search#show'
-  post 'search', to: 'search#result'
+  get 'search', to: 'search#index'
+  post 'search', to: 'search#show'
 
-  root 'railway_stations#index'
+  root 'search#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
