@@ -14,12 +14,14 @@
   <tbody>
     <% @result.each do |route| %>
       <tr>
-        <td> <%= route.train_number %> </td>
-        <td> <%= route.route_name %> </td>
-        <td> <%= route.railway_station_name %> </td>
-        <td> <%= route.arrival_time.to_time.strftime('%H:%M')%> </td>
-        <td> <%= route.departure_time.to_time.strftime('%H:%M') %> </td>
-        <td> Купить </td>
+        <%= form_tag(buy_ticket_path, method: :post) do %>
+          <td> <%= route.train_number %> </td>
+          <td> <%= route.route_name %> </td>
+          <td> <%= route.railway_station_name %> </td>
+          <td> <%= route.arrival_time.to_time.strftime('%H:%M')%> </td>
+          <td> <%= route.departure_time.to_time.strftime('%H:%M') %> </td>
+          <td> <%= submit_tag 'Купить' %> </td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

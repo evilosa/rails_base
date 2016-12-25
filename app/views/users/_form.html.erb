@@ -1,0 +1,12 @@
+<%= form_for(user) do |f| %>
+    <%= render 'common/errors', resource: user %>
+
+    <div class="field">
+      <%= f.label :name, 'Наименование' %>
+      <%= f.text_field :name %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "#{ user.new_record? ? 'Создать' : 'Изменить' }" %>
+    </div>
+<% end %>

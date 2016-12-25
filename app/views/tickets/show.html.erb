@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Номер:</strong>
+  <%= @ticket.number %>
+</p>
+
+<p>
+  <strong>Пользователь:</strong>
+  <%= @ticket.user.to_s %>
+</p>
+
+<p>
+  <strong>Начальная станция:</strong>
+  <%= @ticket.start_station.present? ? @ticket.start_station.name : 'Начальная станция не назначена' %>
+</p>
+
+<p>
+  <strong>Конечная станция:</strong>
+  <%= @ticket.end_station.present? ? @ticket.end_station.name : 'Конечная станция не назначена' %>
+</p>
+
+<%= link_to 'Редактировать', edit_train_path(@train) %> |
+<%= link_to 'Назад', trains_path %>

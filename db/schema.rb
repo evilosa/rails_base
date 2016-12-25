@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161223180808) do
+ActiveRecord::Schema.define(version: 20161225132058) do
+
+  create_table "personal_infos", force: :cascade do |t|
+    t.integer  "ticket_id"
+    t.string   "number"
+    t.string   "series"
+    t.string   "first_name"
+    t.string   "second_name"
+    t.string   "last_name"
+    t.string   "birth_day"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["ticket_id"], name: "index_personal_infos_on_ticket_id"
+  end
 
   create_table "railway_stations", force: :cascade do |t|
     t.datetime "created_at", null: false
