@@ -24,28 +24,28 @@
         <thead>
           <tr>
             <td>Наименование</td>
-            <td>#</td>
-            <td colspan="3">Время:</td>
+            <td colspan="2">#</td>
+            <td>Время отправления:</td>
+            <td>Время прибытия:</td>
+            <td>Действия</td>
           </tr>
         </thead>
         <tbody>
           <% @route.railway_stations.ordered.each do |station| %>
             <tr>
               <td> <%= station.name %> </td>
-              <td><%= form_tag update_position_railway_station_path(station), method: :patch do %>
-                <%= number_field_tag :position, station.position_in(@route) %>
+              <%= form_tag update_position_railway_station_path(station), method: :patch do %>
+                <td> <%= number_field_tag :position, station.position_in(@route) %> </td>
                 <%= hidden_field_tag :route_id, @route.id %>
-                <%= submit_tag 'Изменить' %>
+                <td> <%= submit_tag 'Изменить' %> </td>
               <% end %>
-              </td>
-              <td>
-                <%= form_tag update_time_railway_station_path(station), method: :patch do %>
-                  <%= hidden_field_tag :route_id, @route.id %>
-                  <%= time_select :arrival_time, :arrival_time, :default => station.arrival(@route) %>
-                  <%= time_select :departure_time, :departure_time, :default => station.departure(@route) %>
-                  <%= submit_tag 'Обновить время' %>
-                <% end %>
-              </td>
+
+              <%= form_tag update_time_railway_station_path(station), method: :patch do %>
+                <%= hidden_field_tag :route_id, @route.id %>
+                <td> <%= time_select :arrival_time, :arrival_time, :default => station.arrival(@route) %> </td>
+                <td> <%= time_select :departure_time, :departure_time, :default => station.departure(@route) %> </td>
+                <td> <%= submit_tag 'Обновить время' %> </td>
+              <% end %>
             </tr>
           <% end %>
         </tbody>
