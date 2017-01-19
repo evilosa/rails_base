@@ -1,3 +1,7 @@
+<% if @result.nil? %>
+  <h1>По вашему запросу ничего не найдено</h1>
+<% else %>
+
 <h1>По вашему запросу найдены следующие данные</h1>
 
 <table>
@@ -13,7 +17,7 @@
   <tbody>
     <% @result.each do |route| %>
       <tr>
-        <%= form_tag(buy_ticket_path, method: :post) do %>
+        <%= form_tag(new_ticket_path, method: :get) do %>
           <td> <%= label_tag route.train_number %> </td>
           <td> <%= label_tag route.route_name %> </td>
           <td> <%= label_tag route.arrival_time.to_time.strftime('%H:%M')%> </td>
@@ -30,4 +34,4 @@
     <% end %>
   </tbody>
 </table>
-
+<% end %>

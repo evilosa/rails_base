@@ -9,7 +9,11 @@ class TicketsController < ApplicationController
   end
 
   def new
-    @ticket = Ticket.new
+    @ticket = if params.include?(:ticket)
+      Ticket.new(ticket_params)
+    else
+      Ticket.new
+    end
   end
 
   def edit

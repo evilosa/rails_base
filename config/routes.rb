@@ -9,10 +9,10 @@ Rails.application.routes.draw do
 
   resources :routes, :users, :tickets
 
-  post 'tickets/buy', to: 'tickets#buy', as: 'buy_ticket'
+
 
   get 'search', to: 'search#index'
-  post 'search', to: 'search#show'
+  get 'result', to: 'search#show'
 
 
   root 'search#index'
