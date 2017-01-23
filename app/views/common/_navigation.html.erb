@@ -9,6 +9,7 @@
      <% else %>
       <%= link_to 'Билеты', tickets_path %>
      <% end %>
+
     <%= link_to 'Выйти', destroy_user_session_path, method: :delete %>
   <% else %>
     <%= link_to 'Войти', new_user_session_path %>

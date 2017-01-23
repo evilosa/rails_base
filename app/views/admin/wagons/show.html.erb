@@ -50,5 +50,5 @@
     </p>
 <% end %>
 
-<%= link_to 'Редактировать', edit_wagon_path(@wagon) %> |
-<%= link_to 'Назад', @wagon.train %>
+<%= link_to 'Редактировать', edit_admin_wagon_path(@wagon) %> |
+<%= link_to 'Назад', [:admin, @wagon.train] %>
