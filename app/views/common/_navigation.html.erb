@@ -1,8 +1,17 @@
 <nav>
   <%= link_to 'Поиск билетов', search_path %>
-  <%= link_to 'Станции', railway_stations_path %>
-  <%= link_to 'Поезда', trains_path %>
-  <%= link_to 'Маршруты', routes_path %>
-  <%= link_to 'Билеты', tickets_path %>
-  <%= link_to 'Пользователи', users_path %>
+  <% if user_signed_in? %>
+    <% if current_user.admin? %>
+      <%= link_to 'Станции', admin_railway_stations_path %>
+      <%= link_to 'Поезда', admin_trains_path %>
+      <%= link_to 'Маршруты', admin_routes_path %>
+      <%= link_to 'Билеты', admin_tickets_path %>
+      <%= link_to 'Пользователи', admin_users_path %>
+     <% else %>
+      <%= link_to 'Билеты', tickets_path %>
+     <% end %>
+    <%= link_to 'Выйти', destroy_user_session_path, method: :delete %>
+  <% else %>
+    <%= link_to 'Войти', new_user_session_path %>
+  <% end %>
 </nav>
