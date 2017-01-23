@@ -34,13 +34,13 @@
           <% @route.railway_stations.ordered.each do |station| %>
             <tr>
               <td> <%= station.name %> </td>
-              <%= form_tag update_position_railway_station_path(station), method: :patch do %>
+              <%= form_tag update_position_admin_railway_station_path(station), method: :patch do %>
                 <td> <%= number_field_tag :position, station.position_in(@route) %> </td>
                 <%= hidden_field_tag :route_id, @route.id %>
                 <td> <%= submit_tag 'Изменить' %> </td>
               <% end %>
 
-              <%= form_tag update_time_railway_station_path(station), method: :patch do %>
+              <%= form_tag update_time_admin_railway_station_path(station), method: :patch do %>
                 <%= hidden_field_tag :route_id, @route.id %>
                 <td> <%= time_select :arrival_time, :arrival_time, :default => station.arrival(@route) %> </td>
                 <td> <%= time_select :departure_time, :departure_time, :default => station.departure(@route) %> </td>
@@ -53,5 +53,5 @@
   <% end %>
 </p>
 
-<%= link_to 'Редактировать', edit_route_path(@route) %> |
-<%= link_to 'Назад', routes_path %>
+<%= link_to 'Редактировать', edit_admin_route_path(@route) %> |
+<%= link_to 'Назад', admin_routes_path %>

@@ -12,7 +12,7 @@ Rails.application.routes.draw do
       patch :update_position, :update_time, on: :member
     end
 
-    resources :routes, :users, :tickets
+    resources :routes, :tickets
   end
 
   get 'search', to: 'search#index'
