@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161222120422) do
+ActiveRecord::Schema.define(version: 20170119214114) do
 
   create_table "railway_stations", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 20161222120422) do
     t.integer "railway_station_id"
     t.integer "route_id"
     t.integer "position"
+    t.time    "arrival_time",       default: '2000-01-01 21:59:12'
+    t.time    "departure_time",     default: '2000-01-01 21:59:12'
     t.index ["railway_station_id"], name: "index_railway_stations_routes_on_railway_station_id"
     t.index ["route_id"], name: "index_railway_stations_routes_on_route_id"
   end
@@ -33,11 +35,17 @@ ActiveRecord::Schema.define(version: 20161222120422) do
   end
 
   create_table "tickets", force: :cascade do |t|
-    t.string  "number"
-    t.integer "train_id"
-    t.integer "user_id"
-    t.integer "start_station_id"
-    t.integer "end_station_id"
+    t.integer "number"
+    t.integer "train_id",         null: false
+    t.integer "user_id",          null: false
+    t.integer "start_station_id", null: false
+    t.integer "end_station_id",   null: false
+    t.string  "document_series"
+    t.string  "document_number"
+    t.string  "first_name"
+    t.string  "second_name"
+    t.string  "last_name"
+    t.string  "birth_day"
     t.index ["end_station_id"], name: "index_tickets_on_end_station_id"
     t.index ["start_station_id"], name: "index_tickets_on_start_station_id"
     t.index ["train_id"], name: "index_tickets_on_train_id"
@@ -63,15 +71,14 @@ ActiveRecord::Schema.define(version: 20161222120422) do
   create_table "wagons", force: :cascade do |t|
     t.integer  "number"
     t.integer  "train_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.string   "type"
-    t.integer  "top_seats"
-    t.integer  "bottom_seats"
-    t.integer  "side_top_seats"
-    t.integer  "side_bottom_seats"
-    t.integer  "seats"
-    t.integer  "total_seats"
+    t.integer  "top_seats",         default: 0
+    t.integer  "bottom_seats",      default: 0
+    t.integer  "side_top_seats",    default: 0
+    t.integer  "side_bottom_seats", default: 0
+    t.integer  "seats",             default: 0
     t.index ["train_id"], name: "index_wagons_on_train_id"
   end
 

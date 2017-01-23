@@ -1,23 +1,18 @@
-<%= form_for(wagon) do |f| %>
-  <%= render 'common/errors', resource: wagon %>
-
-    <div class="field">
-      <%= f.label :train, 'Поезд' %>
-      <%= f.collection_select :train_id, Train.all, :id, :number %>
-    </div>
+<%= form_for wagon.new_record? ? [train, wagon] : [wagon] do |f| %>
+    <%= render 'common/errors', resource: wagon %>
 
     <% if wagon.new_record? %>
-      <div class="field">
-        <%= f.label :type, 'Тип вагона' %>
-        <%= f.select :type, Wagon::TYPES %>
-      </div>
+        <div class="field">
+          <%= f.label :type, 'Тип вагона' %>
+          <%= f.select :type, Wagon::TYPES %>
+        </div>
     <% end %>
 
     <% if wagon.has_seats?(:top_seats) %>
-      <div class="field">
-        <%= f.label :top_seats, 'Верхних мест' %>
-        <%= f.text_field :top_seats %>
-      </div>
+        <div class="field">
+          <%= f.label :top_seats, 'Верхних мест' %>
+          <%= f.text_field :top_seats %>
+        </div>
     <% end %>
 
     <% if wagon.has_seats?(:bottom_seats) %>
@@ -49,7 +44,7 @@
     <% end %>
 
     <div class="actions">
-      <%= f.submit "#{ wagon.new_record? ? 'Создать' : 'Изменить' }" %>
+      <%= f.submit wagon.new_record? ? 'Создать' : 'Изменить' %>
     </div>
 
 <% end %>

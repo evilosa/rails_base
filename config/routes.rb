@@ -1,13 +1,20 @@
 Rails.application.routes.draw do
   resources :trains do
-    resources :wagons, :coach_carriages, :compartment_carriages, :open_plan_carriages, :upholstered_carriages, shallow: true
+    resources :wagons, shallow: true
   end
 
   resources :railway_stations do
-    patch :update_position, on: :member
+    patch :update_position, :update_time, on: :member
   end
-  resources :routes
 
-  root 'railway_stations#index'
+  resources :routes, :users, :tickets
+
+
+
+  get 'search', to: 'search#index'
+  get 'result', to: 'search#show'
+
+
+  root 'search#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

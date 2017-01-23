@@ -7,6 +7,10 @@ class Train < ApplicationRecord
   has_many :tickets
   has_many :wagons
 
+  def total_seats
+    wagons.sum("top_seats + bottom_seats + side_top_seats + side_bottom_seats + seats")
+  end
+
   def calculate_seats(wagon_type = 'Wagon', seats_type = :top_seats)
     raise 'Неверно указан тип вагона' unless Wagon::TYPES.include?(wagon_type)
     raise 'Неверно указан тип сидений' unless wagon_type.constantize::SEATS_TYPES.include?(seats_type)

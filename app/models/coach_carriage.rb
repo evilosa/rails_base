@@ -4,8 +4,4 @@ class CoachCarriage < Wagon
 
   SEATS_TYPES = [:seats].freeze
 
-  def calculate_total_seats
-    self.total_seats = self.seats
-  end
-
 end

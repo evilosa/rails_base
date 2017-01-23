@@ -25,16 +25,18 @@
     <p>Вагоны в составе:</p>
     <ul>
       <% @train.wagons.ordered(@train.wagon_order).each do |wagon| %>
-
+        <li><%= link_to "Вагон № #{wagon.number}", wagon_path(wagon) %></li>
       <% end %>
     </ul>
-    <%= link_to "Добавить вагон", new_train_wagon_path(@train) %>
   </p>
 <% end %>
+<p>
+  <%= link_to "Добавить вагон", new_train_wagon_path(@train) %>
+</p>
 
 <p>
   <strong>Кол-во мест:</strong>
-  <%= @train.wagons.sum(:total_seats) %>
+  <%= @train.total_seats %>
 </p>
 
 <p>

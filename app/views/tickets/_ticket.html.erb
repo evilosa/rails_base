@@ -1,0 +1,6 @@
+<tr>
+  <td><%= ticket.number %></td>
+  <td><%= link_to 'Показать', ticket %></td>
+  <td><%= link_to 'Редактировать', edit_ticket_path(ticket) %></td>
+  <td><%= link_to 'Удалить', ticket, method: :delete, data: { confirm: 'Вы уверены?' } %></td>
+</tr>
