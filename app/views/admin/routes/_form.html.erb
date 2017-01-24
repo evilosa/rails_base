@@ -7,11 +7,11 @@
     </div>
 
     <div class="field">
-      <%= f.label :railway_station_ids, 'Список станций ' %>
+      <%= f.label :railway_station_ids %>
       <%= f.collection_select :railway_station_ids, RailwayStation.all, :id, :name, {}, { multiple: true } %>
     </div>
 
     <div class="actions">
-      <%= f.submit "#{ route.new_record? ? 'Создать' : 'Изменить' }" %>
+      <%= f.submit "#{ route.new_record? ? t('common.create_button') : t('common.update_button') }" %>
     </div>
 <% end %>

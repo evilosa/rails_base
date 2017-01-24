@@ -1,2 +1,21 @@
 ru:
   hello: "Привет"
+  admin:
+    greatings: 'Админ, добро пожаловать!'
+  search:
+    station_from: 'Станция отправления'
+    station_to: 'Станция назначения'
+    submit: 'Найти билеты'
+  route:
+    index_title: 'Список маршрутов'
+    station_counts_error: 'Маршрут должен состоять не менее чем из двух станций'
+    name_column_title: 'Название'
+    create_new_route_button: 'Создать новый маршрут'
+  common:
+    author: 'Божков Александр Александрович'
+    create_button: 'Создать'
+    update_button: 'Изменить'
+    show: 'Показать'
+    edit: 'Редактировать'
+    delete: 'Удалить'
+    shure_question: 'Вы уверены?'
