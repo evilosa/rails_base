@@ -22,8 +22,8 @@ ActiveRecord::Schema.define(version: 20170123092916) do
     t.integer "railway_station_id"
     t.integer "route_id"
     t.integer "position"
-    t.time    "arrival_time",       default: '2000-01-01 19:16:21'
-    t.time    "departure_time",     default: '2000-01-01 19:16:21'
+    t.time    "arrival_time",       default: '2000-01-01 21:59:12'
+    t.time    "departure_time",     default: '2000-01-01 21:59:12'
     t.index ["railway_station_id"], name: "index_railway_stations_routes_on_railway_station_id"
     t.index ["route_id"], name: "index_railway_stations_routes_on_route_id"
   end
