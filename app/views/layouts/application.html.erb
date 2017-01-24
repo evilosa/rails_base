@@ -9,7 +9,12 @@
   </head>
 
   <body>
+    <%= render 'common/topnavbar' %>
     <%= render 'common/navigation' %>
+
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
     <%= yield %>
   </body>
 

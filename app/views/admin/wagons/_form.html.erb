@@ -1,0 +1,50 @@
+<%= form_for wagon.new_record? ? [:admin, train, wagon] : [:admin, wagon] do |f| %>
+    <%= render 'common/errors', resource: wagon %>
+
+    <% if wagon.new_record? %>
+        <div class="field">
+          <%= f.label :type, 'Тип вагона' %>
+          <%= f.select :type, Wagon::TYPES %>
+        </div>
+    <% end %>
+
+    <% if wagon.has_seats?(:top_seats) %>
+        <div class="field">
+          <%= f.label :top_seats, 'Верхних мест' %>
+          <%= f.text_field :top_seats %>
+        </div>
+    <% end %>
+
+    <% if wagon.has_seats?(:bottom_seats) %>
+        <div class="field">
+          <%= f.label :bottom_seats, 'Нижних мест' %>
+          <%= f.text_field :bottom_seats %>
+        </div>
+    <% end %>
+
+    <% if wagon.has_seats?(:side_top_seats) %>
+        <div class="field">
+          <%= f.label :side_top_seats, 'Боковых верхних мест' %>
+          <%= f.text_field :side_top_seats %>
+        </div>
+    <% end %>
+
+    <% if wagon.has_seats?(:side_bottom_seats) %>
+        <div class="field">
+          <%= f.label :side_bottom_seats, 'Боковых нижних мест' %>
+          <%= f.text_field :side_bottom_seats %>
+        </div>
+    <% end %>
+
+    <% if wagon.has_seats?(:seats) %>
+        <div class="field">
+          <%= f.label :seats, 'Сидячих мест' %>
+          <%= f.text_field :seats %>
+        </div>
+    <% end %>
+
+    <div class="actions">
+      <%= f.submit wagon.new_record? ? 'Создать' : 'Изменить' %>
+    </div>
+
+<% end %>

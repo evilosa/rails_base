@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Поезд:</strong>
+  <%= @wagon.train.present? ? @wagon.train.number : 'Поезд не указан' %>
+</p>
+
+<p>
+  <strong>Номер:</strong>
+  <%= @wagon.number %>
+</p>
+
+<p>
+  <strong>Тип вагона:</strong>
+  <%= @wagon.type %>
+</p>
+
+<% if @wagon.has_seats?(:top_seats) %>
+    <p>
+    <strong>Верхних мест:</strong>
+    <%= @wagon.top_seats %>
+  </p>
+<% end %>
+
+<% if @wagon.has_seats?(:bottom_seats) %>
+    <p>
+      <strong>Нижних мест:</strong>
+      <%= @wagon.bottom_seats %>
+    </p>
+<% end %>
+
+<% if @wagon.has_seats?(:side_top_seats) %>
+    <p>
+      <strong>Боковых верхних мест:</strong>
+      <%= @wagon.side_top_seats %>
+    </p>
+<% end %>
+
+<% if @wagon.has_seats?(:side_bottom_seats) %>
+    <p>
+      <strong>Боковых нижних мест:</strong>
+      <%= @wagon.side_bottom_seats %>
+    </p>
+<% end %>
+
+<% if @wagon.has_seats?(:seats) %>
+    <p>
+      <strong>Сидячих мест:</strong>
+      <%= @wagon.seats %>
+    </p>
+<% end %>
+
+<%= link_to 'Редактировать', edit_admin_wagon_path(@wagon) %> |
+<%= link_to 'Назад', [:admin, @wagon.train] %>

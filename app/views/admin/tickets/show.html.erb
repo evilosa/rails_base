@@ -35,4 +35,5 @@
   <%= @ticket.initials %>
 </p>
 
-<%= link_to 'Назад', tickets_path %>
+<%= link_to 'Редактировать', edit_admin_ticket_path(@ticket) %> |
+<%= link_to 'Назад', admin_tickets_path %>

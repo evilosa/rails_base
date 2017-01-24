@@ -1,0 +1,6 @@
+<h1>Редактирование вагона</h1>
+
+<%= render 'form', train: @wagon.train, wagon: @wagon %>
+
+<%= link_to 'Показать', [:admin, @wagon] %> |
+<%= link_to 'Назад', [:admin, @wagon.train] %>

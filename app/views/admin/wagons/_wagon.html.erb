@@ -1,0 +1,9 @@
+<tr>
+  <td><%= wagon.number %></td>
+  <td><%= wagon.type %></td>
+  <td><%= wagon.train.present? ? wagon.train.number : 'Не указан' %></td>
+  <td><%= wagon.total_seats %></td>
+  <td><%= link_to 'Показать', admin_wagon_path(wagon) %></td>
+  <td><%= link_to 'Редактировать', edit_admin_wagon_path(wagon) %></td>
+  <td><%= link_to 'Удалить', admin_wagon_path(wagon), method: :delete, data: { confirm: 'Вы уверены?' } %></td>
+</tr>
