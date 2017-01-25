@@ -19,3 +19,7 @@ ru:
     edit: 'Редактировать'
     delete: 'Удалить'
     shure_question: 'Вы уверены?'
+  mail:
+    new_ticket_subject: 'Покупка билета в сервисе Tutu'
+    delete_ticket_subject: 'Отмена покупки билета в сервисе Tutu'
+    signature: 'С уважением, сервис Tutu'
