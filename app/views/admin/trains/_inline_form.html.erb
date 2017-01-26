@@ -1,0 +1,14 @@
+<%= form_for [:admin, train], class: 'form-inline', html: { style: "display: #{hidden ? 'none' : 'block'}" } do |f| %>
+    <%= render 'common/errors', resource: train %>
+
+    <div class="form-group">
+      <%= f.text_field :number, class: 'form-control' %>
+    </div>
+
+    <%= f.hidden_field_tag train.route_id %>
+    <%= f.hidden_field_tag train.current_station_id %>
+    <%= f.hidden_field_tag train.wagon_order %>
+
+    <%= f.submit "#{ train.new_record? ? 'Создать' : 'Изменить' }", class: 'btn btn-default' %>
+
+<% end %>

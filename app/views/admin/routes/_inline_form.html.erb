@@ -1,0 +1,11 @@
+<%= form_for [:admin, route], class: 'form-inline', html: { style: "display: #{hidden ? 'none' : 'block'}" } do |f| %>
+    <%= render 'common/errors', resource: route %>
+
+    <div class="form-group">
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
+
+    <%= f.hidden_field_tag :railway_station_ids %>
+
+    <%= f.submit "#{ route.new_record? ? t('common.create_button') : t('common.update_button') }", class: 'btn btn-default' %>
+<% end %>
