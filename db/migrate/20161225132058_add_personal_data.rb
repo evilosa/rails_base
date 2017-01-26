@@ -6,6 +6,5 @@ class AddPersonalData < ActiveRecord::Migration[5.0]
     add_column :tickets, :second_name, :string
     add_column :tickets, :last_name, :string
     add_column :tickets, :birth_day, :string
-    change_column :tickets, :number, :integer
   end
 end
