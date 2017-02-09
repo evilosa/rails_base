@@ -1,4 +1,4 @@
-<%= form_tag(result_path, method: :get) do %>
+<%= form_tag(result_path, method: :get, class:'search_form') do %>
 
     <div class='form-group'>
       <label><%= t('search.station_from') %>:</label>
@@ -8,6 +8,6 @@
       <label><%= t('search.station_to') %>:</label>
       <%= select_tag "search[last_station_id]", options_from_collection_for_select(@stations, :id, :name), class: 'form-control' %>
     </div>
-    <%= submit_tag t('search.submit'), class: 'btn btn-primary' %>
+    <%= submit_tag t('search.submit'), class: 'btn btn-primary find' %>
 
 <% end %>
